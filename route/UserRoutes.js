@@ -9,10 +9,12 @@ const {
 const validateIDFormat = require("../middlewares/checkIDFormat");
 const router = express.Router();
 
+router.use("/user/:id", validateIDFormat);
+
 router.route("/user").post(addUser);
 router.route("/user").get(getAllUsers);
-router.route("/user/:id").get(validateIDFormat, getUser);
-router.route("/user/:id").put(validateIDFormat, updateUser);
-router.route("/user/:id").delete(validateIDFormat, deleteUser);
+router.route("/user/:id").get(getUser);
+router.route("/user/:id").put(updateUser);
+router.route("/user/:id").delete(deleteUser);
 
 module.exports = router;
